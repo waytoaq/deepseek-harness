@@ -1,0 +1,56 @@
+name: Package unsigned Windows exe
+
+# Every push builds an unsigned win-x64 installer on a GitHub-hosted runner.
+# The manual signed workflow in windows-package.yml stays on its dedicated machine.
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: unsigned-windows-exe-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  package:
+    runs-on: windows-2025
+    timeout-minutes: 180
+    defaults:
+      run:
+        shell: pwsh
+    env:
+      DSH_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@v5.0.0
+        with:
+          dest: ${{ runner.temp }}/setup-pnpm-${{ github.run_id }}-${{ github.run_attempt }}
+      - uses: actions/setup-node@v7.0.0
+        with:
+          node-version: '24'
+      - name: Install locked dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Write unsigned packaging settings
+        run: |
+          $lines = @(
+            'DSH_DESKTOP_APP_ID=com.deepseek.dsh'
+            'DSH_DESKTOP_AUTO_UPDATE_ENV=test'
+            'DSH_DESKTOP_MANDATORY_UPDATE_TEST_ORIGIN=https://policy.example.com'
+            'DSH_DESKTOP_MANDATORY_UPDATE_CONFIG=''{"allowedAuthOrigins":["https://login.example.com"]}'''
+            'DSH_DESKTOP_WINDOWS_COMPRESSION_LEVEL=3'
+          )
+          $path = Join-Path $PWD 'apps/desktop/.env.windows'
+          [System.IO.File]::WriteAllLines($path, $lines)
+      - name: Package unsigned installer
+        run: pnpm run package:desktop:win:x64:unsigned
+      - name: Upload installer
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: deepseek-harness-win-x64-unsigned-${{ github.sha }}
+          path: apps/desktop/.desktop-build/targets/win-x64/unsigned-artifacts/*.exe
+          if-no-files-found: error
+          retention-days: 14

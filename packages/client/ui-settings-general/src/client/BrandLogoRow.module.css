@@ -1,0 +1,76 @@
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 0.5px solid var(--dsw-alias-border-l2);
+}
+
+.info {
+  min-width: 0;
+}
+
+.title {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.description,
+.recommendation,
+.saved {
+  margin-top: 4px;
+  color: var(--dsw-alias-label-secondary);
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.recommendation {
+  font-weight: 500;
+}
+
+.error {
+  margin-top: 6px;
+  color: var(--dsw-alias-state-danger, #d03050);
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.control {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.preview {
+  width: 105px;
+  height: 34px;
+  object-fit: contain;
+  border: 0.5px solid var(--dsw-alias-border-l2);
+  border-radius: 4px;
+  background: var(--dsw-alias-bg-base);
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.button {
+  padding: 4px 12px;
+  font-size: 12px;
+  line-height: 18px;
+  white-space: nowrap;
+  border: 0.5px solid var(--dsw-alias-border-l2);
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}

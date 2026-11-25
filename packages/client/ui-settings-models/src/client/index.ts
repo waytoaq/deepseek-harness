@@ -28,7 +28,7 @@ import { createModelsOperations } from './operations.ts'
 import { createSettingsSchemaOperations } from './schema-operations.ts'
 import { en, ja, es, fr, de, ru, pt, zh, type ModelsKey } from './locales.ts'
 import { WELCOME_NOTICE_SETTINGS_NAMESPACE } from '../onboarding-copy.ts'
-import { Config, ONBOARDING_CONFIG_GLOBAL } from '../onboarding-config.ts'
+import { Config, DEFAULT_DEEPSEEK_PROVIDERS, ONBOARDING_CONFIG_GLOBAL } from '../onboarding-config.ts'
 
 export type { ModelsSectionInjected, ModelsSectionProps } from './ModelsSection.tsx'
 export type { ModelsFooterOwnerProps, ProviderCardExtrasOwnerProps } from './slot-contract.ts'
@@ -80,13 +80,16 @@ export function apply(ctx: ClientContext): void {
   const payload = page[ONBOARDING_CONFIG_GLOBAL]
   const configured = Config(payload === undefined ? {} : payload)
   const credentialOnboarding = configured.credentialOnboarding && !('dshDesktop' in globalThis)
+  const hiddenProviders = new Set<string>(
+    configured.hideDefaultDeepSeek ? DEFAULT_DEEPSEEK_PROVIDERS : [],
+  )
   ctx.effect(() => ctx.locale.register(NS, { zh, en, ja, es, fr, de, ru, pt }), 'ui-settings-models: copy dictionaries')
 
   const schema = createSettingsSchemaOperations(ctx.settingsSchema)
   // Bound once here, where the Remote namespaces are declared in this plugin's
   // own `inject`; the cards receive callbacks and never a context.
   const operations = createModelsOperations(ctx)
-  const controller = new ModelsSettingsStore(ctx, schema, ctx.configForms.describe())
+  const controller = new ModelsSettingsStore(ctx, schema, ctx.configForms.describe(), hiddenProviders)
   // Registration-time text (the nav label thunk) and the inject faces share
   // one bound translate; copy freshness rides the locale revision.
   const t = ctx.locale.bind(NS) as ModelsSectionInjected['t']

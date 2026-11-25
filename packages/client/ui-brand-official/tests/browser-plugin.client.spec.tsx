@@ -101,14 +101,17 @@ describe('official browser-brand plugin', () => {
     }
   })
 
-  it('renders the official name independently from both requested mark sizes', () => {
+  it('renders the deployment logo at the requested height and leaves the name empty', () => {
     const name = render(<OfficialBrandName />)
-    expect(name.container.querySelector('svg')?.getAttribute('viewBox')).toBe('26 0 156 24')
+    expect(name.container.childElementCount).toBe(0)
     name.unmount()
 
-    const mark = render(<OfficialBrandMark size={34} />)
-    expect(mark.container.querySelector('svg')?.getAttribute('width')).toBe('34')
+    const mark = render(<OfficialBrandMark size={56} />)
+    const image = mark.container.querySelector('img')
+    expect(image?.getAttribute('src')).toBe('./logo.jpg')
+    expect(image?.getAttribute('height')).toBe('56')
+    expect(image?.getAttribute('width')).toBe('175')
     mark.rerender(<OfficialBrandMark size={24} />)
-    expect(mark.container.querySelector('svg')?.getAttribute('width')).toBe('24')
+    expect(mark.container.querySelector('img')?.getAttribute('height')).toBe('24')
   })
 })

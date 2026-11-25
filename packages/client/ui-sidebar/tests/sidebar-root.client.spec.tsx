@@ -336,7 +336,7 @@ describe('SidebarRoot shell', () => {
     // The fallback mark copies too, and its click still reaches document.
     const documentClick = vi.fn()
     document.addEventListener('click', documentClick)
-    const mark = screen.getByText('DSH Local Build').closest('[aria-hidden]')!.querySelector('svg')!
+    const mark = screen.getByText('DSH Local Build').closest('[aria-hidden]')!.querySelector('img')!
     await act(async () => { fireEvent.click(mark) })
     document.removeEventListener('click', documentClick)
     expect(documentClick).toHaveBeenCalledOnce()

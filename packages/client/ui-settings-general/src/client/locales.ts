@@ -67,6 +67,14 @@ export const zh = {
   'hostRelease.unknown': '未解析',
   'hostRelease.reload': '刷新以加载新版本',
   'hostRelease.later': '暂不刷新',
+  'brandLogo.title': '自定义 Logo',
+  'brandLogo.description': '上传后，侧栏与首页会立即显示新 Logo，刷新页面后仍会保留。',
+  'brandLogo.recommendation': '建议尺寸 350×112 px（约 3.1:1 横版）；支持 PNG / JPG / WebP 等格式，不超过 5 MB。其他比例会自动居中裁剪并压缩为该尺寸。',
+  'brandLogo.upload': '上传图片',
+  'brandLogo.reset': '恢复默认',
+  'brandLogo.busy': '处理中…',
+  'brandLogo.saved': 'Logo 已更新',
+  'brandLogo.error': '处理失败：请确认是有效图片且不超过 5 MB，或稍后重试。',
 } satisfies Record<string, string>
 
 /** The settings namespace key union. */
@@ -139,6 +147,14 @@ export const en = {
   'hostRelease.unknown': 'Unknown',
   'hostRelease.reload': 'Reload to load the new version',
   'hostRelease.later': 'Not now',
+  'brandLogo.title': 'Custom logo',
+  'brandLogo.description': 'The sidebar and home page update immediately. The logo stays after a reload.',
+  'brandLogo.recommendation': 'Recommended: 350×112 px (about 3.1:1 landscape); PNG / JPG / WebP, up to 5 MB. Other ratios are center-cropped and compressed to this size.',
+  'brandLogo.upload': 'Upload image',
+  'brandLogo.reset': 'Restore default',
+  'brandLogo.busy': 'Processing…',
+  'brandLogo.saved': 'Logo updated',
+  'brandLogo.error': 'Could not process the image. Check that it is a valid image under 5 MB, or try again later.',
 } satisfies Record<SettingsKey, string>
 
 /** Japanese copy, checked against the English keys. */
@@ -208,6 +224,14 @@ export const ja = {
   'hostRelease.unknown': '不明',
   'hostRelease.reload': '再読み込みして新しいバージョンを読み込む',
   'hostRelease.later': '後で',
+  'brandLogo.title': 'カスタムロゴ',
+  'brandLogo.description': 'アップロードするとサイドバーとホームに即時反映され、再読み込み後も保持されます。',
+  'brandLogo.recommendation': '推奨サイズ 350×112 px（約 3.1:1 横長）。PNG / JPG / WebP、5 MB まで。他の比率は中央でトリミングして圧縮されます。',
+  'brandLogo.upload': '画像をアップロード',
+  'brandLogo.reset': '既定に戻す',
+  'brandLogo.busy': '処理中…',
+  'brandLogo.saved': 'ロゴを更新しました',
+  'brandLogo.error': '画像を処理できませんでした。5 MB 以下の有効な画像か確認して再試行してください。',
 } satisfies Record<keyof typeof en, string>
 
 /** Spanish dictionary, checked against the English keys. */
@@ -277,6 +301,14 @@ export const es = {
   'hostRelease.unknown': 'Desconocido',
   'hostRelease.reload': 'Recargar para cargar la nueva versión.',
   'hostRelease.later': 'Ahora no',
+  'brandLogo.title': 'Logotipo personalizado',
+  'brandLogo.description': 'La barra lateral y la página de inicio se actualizan al instante. El logotipo se conserva tras recargar.',
+  'brandLogo.recommendation': 'Recomendado: 350×112 px (aprox. 3.1:1 horizontal); PNG / JPG / WebP, hasta 5 MB. Otras proporciones se recortan al centro y se comprimen.',
+  'brandLogo.upload': 'Subir imagen',
+  'brandLogo.reset': 'Restaurar predeterminado',
+  'brandLogo.busy': 'Procesando…',
+  'brandLogo.saved': 'Logotipo actualizado',
+  'brandLogo.error': 'No se pudo procesar la imagen. Comprueba que sea válida y menor de 5 MB, o inténtalo más tarde.',
 } satisfies Record<keyof typeof en, string>
 
 /** French dictionary, checked against the English keys. */
@@ -346,6 +378,14 @@ export const fr = {
   'hostRelease.unknown': 'Inconnu',
   'hostRelease.reload': 'Recharger pour charger la nouvelle version',
   'hostRelease.later': 'Pas maintenant',
+  'brandLogo.title': 'Logo personnalisé',
+  'brandLogo.description': 'La barre latérale et la page d’accueil se mettent à jour immédiatement. Le logo est conservé après rechargement.',
+  'brandLogo.recommendation': 'Recommandé : 350×112 px (environ 3.1:1 paysage) ; PNG / JPG / WebP, 5 Mo maximum. Les autres ratios sont recadrés au centre et compressés.',
+  'brandLogo.upload': 'Importer une image',
+  'brandLogo.reset': 'Rétablir le logo par défaut',
+  'brandLogo.busy': 'Traitement…',
+  'brandLogo.saved': 'Logo mis à jour',
+  'brandLogo.error': 'Impossible de traiter l’image. Vérifiez qu’elle est valide et inférieure à 5 Mo, ou réessayez plus tard.',
 } satisfies Record<keyof typeof en, string>
 
 /** German dictionary, checked against the English keys. */
@@ -415,6 +455,14 @@ export const de = {
   'hostRelease.unknown': 'Unbekannt',
   'hostRelease.reload': 'Neu laden, um die neue Version zu laden',
   'hostRelease.later': 'Nicht jetzt',
+  'brandLogo.title': 'Eigenes Logo',
+  'brandLogo.description': 'Seitenleiste und Startseite aktualisieren sich sofort. Das Logo bleibt nach dem Neuladen erhalten.',
+  'brandLogo.recommendation': 'Empfohlen: 350×112 px (ca. 3,1:1 quer); PNG / JPG / WebP, bis 5 MB. Andere Verhältnisse werden zentriert zugeschnitten und komprimiert.',
+  'brandLogo.upload': 'Bild hochladen',
+  'brandLogo.reset': 'Standard wiederherstellen',
+  'brandLogo.busy': 'Wird verarbeitet…',
+  'brandLogo.saved': 'Logo aktualisiert',
+  'brandLogo.error': 'Bild konnte nicht verarbeitet werden. Prüfen Sie, ob es gültig und kleiner als 5 MB ist, oder versuchen Sie es später erneut.',
 } satisfies Record<keyof typeof en, string>
 
 /** Russian dictionary, checked against the English keys. */
@@ -484,6 +532,14 @@ export const ru = {
   'hostRelease.unknown': 'Неизвестно',
   'hostRelease.reload': 'Перезагрузите, чтобы загрузить новую версию',
   'hostRelease.later': 'Не сейчас',
+  'brandLogo.title': 'Свой логотип',
+  'brandLogo.description': 'Боковая панель и главная страница обновятся сразу. Логотип сохранится после перезагрузки.',
+  'brandLogo.recommendation': 'Рекомендуется 350×112 px (около 3,1:1); PNG / JPG / WebP, до 5 МБ. Другие пропорции обрезаются по центру и сжимаются.',
+  'brandLogo.upload': 'Загрузить изображение',
+  'brandLogo.reset': 'Вернуть стандартный',
+  'brandLogo.busy': 'Обработка…',
+  'brandLogo.saved': 'Логотип обновлён',
+  'brandLogo.error': 'Не удалось обработать изображение. Проверьте, что оно корректно и меньше 5 МБ, или повторите позже.',
 } satisfies Record<keyof typeof en, string>
 
 /** Portuguese dictionary, checked against the English keys. */
@@ -553,4 +609,12 @@ export const pt = {
   'hostRelease.unknown': 'Desconhecido',
   'hostRelease.reload': 'Recarregue para carregar a nova versão',
   'hostRelease.later': 'Agora não',
+  'brandLogo.title': 'Logo personalizado',
+  'brandLogo.description': 'A barra lateral e a página inicial são atualizadas imediatamente. O logo permanece após recarregar.',
+  'brandLogo.recommendation': 'Recomendado: 350×112 px (cerca de 3,1:1 horizontal); PNG / JPG / WebP, até 5 MB. Outras proporções são cortadas ao centro e comprimidas.',
+  'brandLogo.upload': 'Enviar imagem',
+  'brandLogo.reset': 'Restaurar padrão',
+  'brandLogo.busy': 'Processando…',
+  'brandLogo.saved': 'Logo atualizado',
+  'brandLogo.error': 'Não foi possível processar a imagem. Verifique se é válida e tem menos de 5 MB, ou tente novamente mais tarde.',
 } satisfies Record<keyof typeof en, string>

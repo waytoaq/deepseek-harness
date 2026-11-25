@@ -1,19 +1,19 @@
-import { BrandWordmark, FishLogo } from '@deepseek-ai/dsh-client-ui-primitives'
+import { BrandLogo } from '@deepseek-ai/dsh-client-ui-primitives'
 import type { SidebarBrandMarkOwnerProps } from '@deepseek-ai/dsh-client-ui-sidebar/client'
 
 /**
- * Render the official mark with the presentation requested by its host surface.
+ * Render the deployment logo (`apps/web/public/logo.jpg`) at the height the sidebar requests.
  * @param props - Host-supplied mark presentation.
- * @returns the official whale mark.
+ * @returns the logo image.
  */
 export function OfficialBrandMark({ size }: SidebarBrandMarkOwnerProps) {
-  return <FishLogo size={size} />
+  return <BrandLogo size={size} />
 }
 
 /**
- * Render the official name artwork without its independently slotted mark.
- * @returns the official name wordmark.
+ * Occupy the name slot without drawing a wordmark beside the wide logo.
+ * @returns nothing.
  */
 export function OfficialBrandName() {
-  return <BrandWordmark includeMark={false} />
+  return null
 }

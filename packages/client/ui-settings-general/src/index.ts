@@ -9,11 +9,14 @@ import z from '@deepseek-ai/schemastery'
 export interface Config {
   /** Last acknowledged welcome notice version. */
   welcomeNoticeVersion: Volatile<string | undefined>
+  /** Cropped custom logo as a data URL; unset restores the shipped artwork. */
+  brandLogo: Volatile<string | undefined>
 }
 
-/** Live welcome preference. */
+/** Live welcome and brand preferences. */
 export const Config = z.object({
   welcomeNoticeVersion: z.string().volatile(),
+  brandLogo: z.string().volatile(),
 })
 
 /** The browser consumes the configuration form projection.

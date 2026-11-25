@@ -31,6 +31,8 @@
   - text: Keyboard shortcuts
   - paragraph: View and edit available shortcuts and input actions
   - button "Edit shortcuts"
+  - text: "Custom logo The sidebar and home page update immediately. The logo stays after a reload. Recommended: 350×112 px (about 3.1:1 landscape); PNG / JPG / WebP, up to 5 MB. Other ratios are center-cropped and compressed to this size."
+  - button "Upload image"
   - text: Send behavior while busy What Enter and the Send button do while the agent is running; Cmd/Ctrl+Enter uses the other behavior
   - button "Queue"
   - text: Performance & usage Choose how much performance and usage information to show

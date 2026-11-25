@@ -667,6 +667,10 @@ export async function launchWebScaffold(options: LaunchOptions = {}): Promise<We
         },
       }],
     { id: 'credentials', config: { dshHome: harnessHome } },
+    // Regression scenarios exercise the shipped Models page and onboarding in
+    // full; the deployment defaults that hide the official rows are restored
+    // here so product-level presentation does not change their coverage.
+    { id: 'ui-settings-models', config: { credentialOnboarding: true, hideDefaultDeepSeek: false } },
     // The shipped directory-picker row is the -auto chooser, which resolves
     // the interaction from the RUNNING host (display, SSH launch, bind). The
     // lane's goldens are interaction-specific (workspace-management drives

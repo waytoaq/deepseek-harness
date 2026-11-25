@@ -18,6 +18,7 @@ import type { ConnectionHandle } from '@deepseek-ai/dsh-client-connection/client
 import type {} from '@deepseek-ai/dsh-client-modules/client'
 import { resolveSlotLabel } from '@deepseek-ai/dsh-client-ui-slots'
 import { closeTopModal } from '@deepseek-ai/dsh-client-ui-primitives'
+import { registerBrandLogoRow } from './brand-logo-settings.ts'
 // Type-only: the settings slot declarations plus the ctx.configForms Context
 // merge. Cross-plugin collaboration goes through the service, never a value
 // import (client bundle purity gate).
@@ -82,6 +83,7 @@ export const inject = ['slots', 'locale', 'connection', 'remote', 'remote.settin
  * @param ctx - client root context.
  */
 export function apply(ctx: ClientContext): void {
+  registerBrandLogoRow(ctx, NS)
   ctx.slots.inject('settings.general.item', () => ctx.slots.register({
     name: 'settings.general.item', id: 'developer-tools', order: 15, locale: NS,
     inject: (): DeveloperToolsRowInjected => ({

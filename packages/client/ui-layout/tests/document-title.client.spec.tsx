@@ -33,12 +33,12 @@ describe('DocumentTitle', () => {
   it('projects a durable title and restores the product title', () => {
     const { sessionId, sessions, props } = titleSources()
     document.title = 'stale title'
-    const mounted = render(<DocumentTitle {...props} productTitle="DeepSeek Harness" />)
-    expect(document.title).toBe('DeepSeek Harness')
+    const mounted = render(<DocumentTitle {...props} productTitle="Teligen Harness" />)
+    expect(document.title).toBe('Teligen Harness')
     act(() => { sessions.update((state) => { state.byId[sessionId]!.title = 'First title' }) })
-    expect(document.title).toBe('First title — DeepSeek Harness')
+    expect(document.title).toBe('First title — Teligen Harness')
     act(() => { sessions.update((state) => { state.byId[sessionId]!.title = 'Revised title' }) })
-    expect(document.title).toBe('Revised title — DeepSeek Harness')
+    expect(document.title).toBe('Revised title — Teligen Harness')
     act(() => {
       const state = sessions.getSnapshot()
       sessions.set({
@@ -46,9 +46,9 @@ describe('DocumentTitle', () => {
         byId: { ...state.byId, [sessionId]: { ...state.byId[sessionId]!, retainedBy: {} } },
       })
     })
-    expect(document.title).toBe('DeepSeek Harness')
+    expect(document.title).toBe('Teligen Harness')
     mounted.unmount()
-    expect(document.title).toBe('DeepSeek Harness')
+    expect(document.title).toBe('Teligen Harness')
   })
 
   it('uses the localized product title supplied by the frame', () => {

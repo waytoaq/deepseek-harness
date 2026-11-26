@@ -50,13 +50,13 @@ export function installWindowsMenu(): { update(): void; dispose(): void } {
     }
   }
   document.addEventListener('focusout', rememberEditor, true)
-  const createButton = (name: 'application' | 'edit', index: 0 | 1): HTMLButtonElement => {
+  const createButton = (name: 'edit'): HTMLButtonElement => {
     const button = document.createElement('button')
     button.type = 'button'
     button.setAttribute('role', 'menuitem')
     button.setAttribute('aria-haspopup', 'menu')
     button.setAttribute('aria-expanded', 'false')
-    button.tabIndex = index === 0 ? 0 : -1
+    button.tabIndex = 0
     button.addEventListener('pointerdown', (event) => { event.preventDefault() })
     button.addEventListener('mousedown', (event) => { event.preventDefault() })
     const open = async (): Promise<void> => {
@@ -70,13 +70,7 @@ export function installWindowsMenu(): { update(): void; dispose(): void } {
     }
     button.addEventListener('click', () => { void open() })
     button.addEventListener('keydown', (event) => {
-      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
-        event.preventDefault()
-        const next = buttons[index === 0 ? 1 : 0]
-        button.tabIndex = -1
-        next.tabIndex = 0
-        next.focus()
-      } else if (event.key === 'ArrowDown') {
+      if (event.key === 'ArrowDown') {
         event.preventDefault()
         void open()
       }
@@ -84,7 +78,7 @@ export function installWindowsMenu(): { update(): void; dispose(): void } {
     bar.append(button)
     return button
   }
-  const buttons = [createButton('application', 0), createButton('edit', 1)] as const
+  const editButton = createButton('edit')
   shadow.append(style, bar)
   const mount = (): void => {
     // AppFrame owns this seat; boot readiness alone precedes the rendered application.
@@ -98,8 +92,7 @@ export function installWindowsMenu(): { update(): void; dispose(): void } {
   const update = (): void => {
     const { messages } = resolveDesktopLocale(document.documentElement.lang)
     bar.setAttribute('aria-label', messages.menuBar)
-    buttons[0].textContent = messages.application
-    buttons[1].textContent = messages.edit
+    editButton.textContent = messages.edit
   }
   update()
   return {

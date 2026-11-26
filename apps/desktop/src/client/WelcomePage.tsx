@@ -33,7 +33,7 @@ export function Welcome({ api }: { api: WelcomeApi }) {
   const mounted = useRef(true)
   const revision = useRef(0)
   const input = useRef<HTMLInputElement>(null)
-  const keyButton = useRef<HTMLButtonElement>(null)
+  const entryButton = useRef<HTMLButtonElement>(null)
   const focusEntry = useRef(false)
 
   function navigate(next: Page) {
@@ -75,7 +75,7 @@ export function Welcome({ api }: { api: WelcomeApi }) {
     if (page === 'key') input.current?.focus()
     else if (page === 'entry' && focusEntry.current) {
       focusEntry.current = false
-      keyButton.current?.focus()
+      entryButton.current?.focus()
     }
   }, [page, api])
 
@@ -209,8 +209,8 @@ export function Welcome({ api }: { api: WelcomeApi }) {
           onClick={() => { void cancel() }}>{m.welcomeAuthCancel}</button>
       </div>
       <div id="entry-actions" className="actions" hidden={page !== 'entry'}>
-        <button id="sign-in" className="primary" type="button" onClick={() => { void api.analytics?.('auth_page_click', { button_name: 'sign_in' }); void start() }}>{m.welcomeSignIn}</button>
-        <button ref={keyButton} id="api-key" className="secondary" type="button" onClick={() => { void api.analytics?.('auth_page_click', { button_name: 'api-key' }); navigate('key') }}>{m.welcomeApiKey}</button>
+        <button ref={entryButton} id="start" className="primary" type="button" disabled={busy} onClick={() => { void skip() }}>{m.welcomeStart}</button>
+        <p id="start-error" className="key-error" role="alert" hidden={error === ''}>{error}</p>
       </div>
       <div id="key-actions" className="actions" hidden={page !== 'key'}>
         <button id="save-key" className="primary" type="submit" form="key-form" disabled={busy || draft.trim() === ''}>{m.welcomeKeySave}</button>

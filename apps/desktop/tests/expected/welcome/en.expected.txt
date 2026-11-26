@@ -1,6 +1,5 @@
-DeepSeek Harness
-DeepSeek Harness
-Welcome to DeepSeek Harness
+Teligen Harness
+Teligen Harness
+Welcome to Teligen Harness
 Build potential. Explore intelligence.
-Sign in
-Add API Key
+Get started
